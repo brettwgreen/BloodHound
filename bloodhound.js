@@ -33,7 +33,6 @@ ko.extenders.sniff = function(target, option) {
 
 	}
 	target._test_array = function(newValue) {
-    	console.log('checking array');
     	if (target().length !== target.originalValue.length) {
     		target.modified = true;
     	}
@@ -79,7 +78,6 @@ ko.extenders.sniff = function(target, option) {
 			var item = target()[i];
 			for (var property in item) {
 				var prop = item[property];
-				console.log(property + "," + ko.isObservable(prop) + "," + prop._trackingEnabled);
 			    if (ko.isObservable(prop) && prop._trackingEnabled) {
 					prop.subscribe(function(changes) {
 						target.test(changes);
